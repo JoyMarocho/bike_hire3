@@ -1,0 +1,6 @@
+*.pyc
+migrations/
+vscode
+virtual/
+start.sh
+__pycache__
