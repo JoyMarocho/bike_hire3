@@ -72,7 +72,7 @@ def update_pic(username):
         db.session.commit()
     return redirect(url_for('main.profile',username=username))
 
-@main.route('/reviews/<bikes_id>')
+@main.route('/reviews/<bikes_id>',methods= ['POST','GET'])
 @login_required
 def review(bikes_id):
     '''
@@ -92,7 +92,9 @@ def review(bikes_id):
             user_id=user_id,
             )
 
-        new_review.save()
+        db.session.add(new_review)
+        db.session.commit()
+        
         new_reviews = [new_review]
         print(new_reviews)
         return redirect(url_for('.review', bikes_id=bikes_id))
@@ -100,8 +102,8 @@ def review(bikes_id):
 
 @main.route('/bikes')
 @login_required
-def bike():
-    bikes = Bikes.query.all()
+def bikes():
+    bikes = Bikes.query.filter_by(hired=False).all()
     
     return render_template('bikes_display.html', bikes=bikes)
 
@@ -131,8 +133,21 @@ def new_bike():
         db.session.add(bikes_obj)
         db.session.commit()
         
-        return redirect(url_for('main.bike'))
+        return redirect(url_for('main.bikes'))
     return render_template('new_bike.html', bike_form=form)
+
+
+@main.route('/hire/<bikes_id>',methods=['GET', 'POST'])
+@login_required
+def hire(bikes_id):
+    hired_bike=Bikes.query.filter_by(id=int(bikes_id)).first()
+    hired_bike.hired=True
+    
+    db.session.add(hired_bike)
+    db.session.commit()
+    
+    return redirect (url_for('main.bikes'))
+    
 
 
 

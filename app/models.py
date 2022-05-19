@@ -17,6 +17,7 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     secure_password = db.Column(db.String(255),nullable = False)
+    bike_reviews = db.relationship("Reviews",backref="username")
 
     @property
     def set_password(self):
@@ -41,7 +42,8 @@ class Bikes(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     category = db.Column(db.String(255))
     bike_pic_path = db.Column(db.String())
-    bike_reviews = db.relationship("Reviews",backref="username")
+    bike_reviews = db.relationship("Reviews",backref="reviewer")
+    hired = db.Column(db.Boolean,default=False,nullable=False)
 
     def save_bike(self):
         db.session.add(self)
@@ -73,5 +75,4 @@ class Reviews(db.Model):
         reviews = Reviews .query.filter_by(bikes_id=id).all()
         return reviews
 
-    def __repr__(self):
-        return f"Reviews ('{self.review}', '{self.date_posted}')"
+   

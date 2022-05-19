@@ -1,7 +1,10 @@
 body{
-    background-image: url('../photos/back_1.avif');
+    background-image: url('../photos/back_3.avif');
     background-repeat: no-repeat;
     background-size: cover;
+    color: white;
+}
+
+card-content{
     color: black;
-    /* color: rosybrown; */
 }
