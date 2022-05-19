@@ -1,0 +1,126 @@
+{% extends 'base.html'%} {% block styles %} {{super()}}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/contacts.css') }}"> 
+{% endblock %}
+<title>{{title}}</title>
+
+{% block content%} 
+
+<div class="container1">
+<div class="row justify-content-center">
+<div class="col-lg-11">
+<div class="wrapper">
+<div class="row no-gutters justify-content-between">
+<div class="col-lg-6 d-flex align-items-stretch">
+<div class="info-wrap w-100 p-5"><br><br><br>
+                    <h3 class="mb-4"> Contact US </h3>
+                    <div class="dbox w-100 d-flex align-items-start">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <span class="fa fa-map-marker"></span>
+                    </div>
+                    <div class="text pl-4">
+                        <p><span> Address: </span> 00100, Nairobi Kenya</p>
+                    </div>
+                </div>
+                <div class="dbox w-100 d-flex align-items-start">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="fa fa-phone"></span>
+                    </div>
+                    <div class="text pl-4">
+                    <p>
+                        <span> Phone: </span>
+                        <a href="tel://1234567920">+ 254 72 9890 9228</a>
+                    </p>
+                    </div>
+                </div>
+                <div class="dbox w-100 d-flex align-items-start">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="fa fa-paper-plane"></span>
+                    </div>
+                    <div class="text pl-4">
+                    <p>
+                        <span> Email: </span>
+                        <a href="mailto:info@yoursite.com"> info@bikehire.com </a>
+                    </p>
+                    </div>
+                </div>
+                <div class="dbox w-100 d-flex align-items-start">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="fa fa-globe"></span>
+                    </div>
+                    <div class="text pl-4">
+                    <p><span> Website: </span> <a href="#"> bikehire.com</a></p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="contact-wrap w-100 p-md-5 p-4">
+                <h3 class="mb-4"> Get in Touch </h3>
+                <div id="form-message-warning" class="mb-4"></div>
+                
+                <form method="POST" id="contactForm" name="contactForm" action="https://formspree.io/f/mlezlqnr">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                        <input
+                            type="text" class="form-control" name="name" id="name" placeholder="Name"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                        <textarea
+                            name="message" class="form-control" id="message" cols="30" rows="5" placeholder="Message" ></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                        <input type="submit" value="Send Message" class="btn btn-primary"/>
+
+                        <div class="submitting"></div>
+                        </div>
+                    </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+            <div class="footer">
+                <span class="bikehire" style="color:#04AA6D; font-size:26px; text-align:center;"> BIKE HIRE </span>
+                <p style="text-align:center;"> We are a cycling tour company offering supported single and multi-day cycling trips in Karura. <br> With 3 years of experience, 
+                we are well equipped and knowledgeable to handle all the logistical needs of a bike trip hence giving you a memorable Bike adventure..</p>
+                <p>Open Monday - Friday : 7:00 - 20 : 00</p>
+                <p>Open Saturdays : 9:00 - 19:00</p>
+                <a href="#">
+                    <i class="icon ion-social-facebook"></i>
+                </a>
+                <a href="#">
+                    <i class="icon ion-social-twitter"></i>
+                </a>
+                <a href="#">
+                    <i class="icon ion-social-snapchat"></i>
+                </a>
+                <a href="#">
+                    <i class="icon ion-social-instagram"></i>
+                </a>
+        <p class="copyright"><span class="bikehire">bike-hire</span> © 2022</p>
+    </div>
+</footer>
+</div>
+{% endblock%}
+

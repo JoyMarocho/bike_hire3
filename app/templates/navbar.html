@@ -7,21 +7,22 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <ul class="navbar-nav my-2 my-lg-0 nav navbar-left">
-    {% if current_user.is_authenticated %}
     <li class="nav-item">
-    <a href="/new_bike">Post Bike</a> 
+    <a href="/new_bike" id="a1" style="color: #E0E1E4; font-size: 17px;margin-left: 17px; text-decoration:none;">Post Bike</a>
     </li>
-
     <li class="nav-item">
-    <a href="/bikes">Hire Bike</a> 
+    <a href="/bikes" id="a2" style="color: #E0E1E4; margin-left: 15px; font-size: 17px;text-decoration:none;">Hire Bike</a> 
     </li> 
-    {% else %}
+    <li class="nav-item">
+        <a href="/about" id="a2" style="color: #E0E1E4; margin-left: 15px; font-size: 17px;text-decoration:none;">About Us</a> 
+        </li> 
+    <li class="nav-item">
+        <a href="/contacts" id="a2" style="color: #E0E1E4; margin-left: 15px; font-size: 17px;text-decoration:none;">Contact Us</a> 
+        </li> 
     
-
-    {% endif %}
 </ul>  
 
-    </ul>
+ 
 
 
     <div class="collapse navbar-collapse" id="navbarToggler">

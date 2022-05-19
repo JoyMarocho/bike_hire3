@@ -176,4 +176,12 @@ def returnbike(bike_id):
     
     return redirect(url_for('main.view_hired'))
 
+@main.route('/about',methods=['GET', 'POST'])
+def about():
+    
+    return render_template('about.html')
 
+@main.route('/contacts',methods=['GET', 'POST'])
+def contacts():
+    
+    return render_template('contacts.html')
