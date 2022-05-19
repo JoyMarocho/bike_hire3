@@ -102,7 +102,8 @@ def review(bikes_id):
 @login_required
 def bike():
     bikes = Bikes.query.all()
-    return render_template('bikes_display.html', bikes=bikes, user=user)
+    
+    return render_template('bikes_display.html', bikes=bikes)
 
 @main.route('/new_bike', methods=['GET', 'POST'])
 @login_required
@@ -118,22 +119,20 @@ def new_bike():
     if form.validate_on_submit():
         pic = request.files['image']
         pic_name = secure_filename(pic.filename)
-        pic.save(os.path.join(app.config['UPLOAD_FOLDER'],pic_name))
+        # pic.save(os.path.join(app.config['UPLOAD_FOLDER'],pic_name))
+        path = os.path.join(app.root_path,'static/uploads',pic.filename)
+        pic.save(path)
         category= form.category.data
         
         user_id = current_user._get_current_object().id
         bikes_obj = Bikes(user_id=user_id,category=category,bike_pic_path=pic_name)
-        bikes_obj.save_bike
+        # bikes_obj.save_bike
+        
+        db.session.add(bikes_obj)
+        db.session.commit()
+        
         return redirect(url_for('main.bike'))
     return render_template('new_bike.html', bike_form=form)
 
 
-@main.route('/categories/<category>')
-def category(category):
-    '''
-    function to return the pitches by category
-    '''
-    category = Bikes.get_bikes(category) #get_bikes defined in the bikes route
-    # print(category)
-    title = f'{category}'
-    return render_template('catalogue.html',title = title, category = category)
+
