@@ -18,6 +18,7 @@ class User(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String())
     secure_password = db.Column(db.String(255),nullable = False)
     bike_reviews = db.relationship("Reviews",backref="username")
+    the_bike = db.relationship("Hired_Bikes",backref="the_bike")
 
     @property
     def set_password(self):
@@ -44,6 +45,7 @@ class Bikes(db.Model):
     bike_pic_path = db.Column(db.String())
     bike_reviews = db.relationship("Reviews",backref="reviewer")
     hired = db.Column(db.Boolean,default=False,nullable=False)
+    hired_bike= db.relationship("Hired_Bikes",backref="hired_bike")
 
     def save_bike(self):
         db.session.add(self)
@@ -75,4 +77,10 @@ class Reviews(db.Model):
         reviews = Reviews .query.filter_by(bikes_id=id).all()
         return reviews
 
-   
+class Hired_Bikes(db.Model):
+    __tablename__='hired_bikes'
+    id = db.Column(db.Integer,primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    bike_id=db.Column(db.Integer, db.ForeignKey("bikes.id"))
+    
+  

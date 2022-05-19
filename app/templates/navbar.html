@@ -21,6 +21,9 @@
               <a class="nav-link login-text" class="fas fa-user" href="{{url_for('main.profile',username=current_user.username)}}"><i class="far fa-user"></i>&nbsp;{{current_user.username}}</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link login-text" class="fas fa-user" href="{{url_for('main.view_hired')}}"> View Hired </a>
+        </li>
+          <li class="nav-item">
               <a class="nav-link login-text" href="{{url_for('auth.logout')}}"><i class="fas fa-sign-out-alt"></i>&nbsp;Sign out</a>
           </li>
           {% else %}

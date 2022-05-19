@@ -2,7 +2,7 @@ from pickle import GET
 from flask import abort, render_template
 from flask import render_template,request,redirect,url_for
 from flask_login import login_required,current_user
-from ..models import Bikes, User, Reviews
+from ..models import Bikes, User, Reviews, Hired_Bikes
 from . import main
 from .. import db,photos
 from .forms import ReviewForm, UpdateProfile, BikeForm
@@ -76,7 +76,7 @@ def update_pic(username):
 @login_required
 def review(bikes_id):
     '''
-    function to return the comments
+    function to return the reviews
     '''
     form = ReviewForm()
     bike = Bikes.query.get(bikes_id)
@@ -143,11 +143,37 @@ def hire(bikes_id):
     hired_bike=Bikes.query.filter_by(id=int(bikes_id)).first()
     hired_bike.hired=True
     
+    hire_bike=Hired_Bikes(user_id=current_user.id,bike_id=int(bikes_id))
+    
+    db.session.add(hire_bike)
+    db.session.commit()
+    
     db.session.add(hired_bike)
     db.session.commit()
     
     return redirect (url_for('main.bikes'))
     
+@main.route('/view_hired/',methods=['GET'])
+@login_required
+def view_hired():
+    bikes = Hired_Bikes.query.filter_by(user_id=current_user.id).all()
+    
+  
+    return render_template('hired.html',bikes=bikes)
 
+
+@main.route('/returnbike/<bike_id>',methods=['GET', 'POST'])
+@login_required
+def returnbike(bike_id):
+    hired_bike=Bikes.query.filter_by(id=int(bike_id)).first()
+    hired_bike.hired=False
+    
+    db.session.add(hired_bike)
+    db.session.commit()
+    
+    Hired_Bikes.query.filter_by(bike_id=int(bike_id)).delete()
+    db.session.commit()
+    
+    return redirect(url_for('main.view_hired'))
 
 
