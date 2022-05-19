@@ -1,0 +1,51 @@
+
+/*=================== fonts ====================*/
+@import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&display=swap");
+/*---------------------------------------------------- */
+
+body {
+    
+    width: 100%;
+    height: 100vh;
+    color: white;
+    font-size: 20px;
+}
+
+.container1 {
+    background-image: url(../photos/bike_4.avif);
+    background-size: cover;
+    background-position: center;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Heebo", sans-serif;
+    font-weight: bold;
+}
+
+.bikehire {
+    font-family: Rancho;
+    font-size: 36px;
+    color: #04AA6D;
+    justify-self: center;
+    line-height: 0.8rem;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #04AA6D;
+    font-family: Libre Franklin;
+    font-size: 16px;
+}
+
+.footer {
+    position: flex;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    text-align: center;
+    
+}
