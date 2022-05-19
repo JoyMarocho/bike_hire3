@@ -1,5 +1,4 @@
 body{
-    background-color: #000000;
     font-family: 'Poppins', sans-serif;
     color: white;
 }
@@ -7,6 +6,7 @@ body{
 h1 {
     color: white;
     font-size: 80px;
+    font-family: Oleo Script Swash Caps, cursive;
 }
 p {
     color:white;
@@ -14,8 +14,16 @@ p {
 }
 #icon {
     color: white;
-    margin-right: 60px;
+    margin-right: 40px;
 }
 #footer {
     margin-top: 40px;
-    margin-bottom: 40px;}
+    margin-bottom: 40px;
+}
+#quote {
+    padding-left: 200px;
+    padding-right: 220px;
+}
+.btn {
+    font-size: 22px;
+}

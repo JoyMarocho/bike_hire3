@@ -2,10 +2,26 @@
     <a class="navbar-brand" href="#">
     <img src="../static/photos/BIKE LOGO.jpg" alt="" width="75" height="55" class="d-inline-block align-text">
   </a>
-    <a class="navbar-brand" href="/" id="logo">BIKE HIRE</a>
+    <a class="navbar-brand" href="/" id="logo" style="font-family: Oleo Script Swash Caps, cursive;font-size: 40px;">BIKE HIRE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <ul class="navbar-nav my-2 my-lg-0 nav navbar-left">
+    {% if current_user.is_authenticated %}
+    <li class="nav-item">
+    <a href="/new_bike">Post Bike</a> 
+    </li>
+
+    <li class="nav-item">
+    <a href="/bikes">Hire Bike</a> 
+    </li> 
+    {% else %}
+    
+
+    {% endif %}
+</ul>  
+
+    </ul>
 
 
     <div class="collapse navbar-collapse" id="navbarToggler">
